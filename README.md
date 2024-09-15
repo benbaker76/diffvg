@@ -17,21 +17,19 @@ diffvg is a differentiable rasterizer for 2D vector graphics. See the webpage fo
 ![ellipse_transform](https://user-images.githubusercontent.com/951021/67149013-06b54700-f25b-11e9-91eb-a61171c6d4a4.gif)
 
 # Install
+Install the [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads)
 ```
+git clone https://github.com/benbaker76/diffvg
 git submodule update --init --recursive
-conda install -y pytorch torchvision -c pytorch
-conda install -y numpy
-conda install -y scikit-image
-conda install -y -c anaconda cmake
-conda install -y -c conda-forge ffmpeg
-pip install svgwrite
-pip install svgpathtools
-pip install cssutils
-pip install numba
-pip install torch-tools
-pip install visdom
-python setup.py install
+git -m venv .venv
+./.venv/Scripts/activate
+pip install torch==2.4.0+cu124 torchvision==0.19.0+cu124 --index-url https://download.pytorch.org/whl/cu124
+pip install -r requirements.txt
+set LIBDIR=.\.venv\Lib\site-packages
+python setup.py bdist_wheel
+pip install dist/diffvg-0.0.1-cp310-cp310-win_amd64.whl
 ```
+
 # Install using poetry
 
 ## prerequisite

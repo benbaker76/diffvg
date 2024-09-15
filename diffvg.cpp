@@ -155,7 +155,7 @@ DEVICE void accumulate_boundary_gradient(const Shape &shape,
             atomic_add(&d_p->radius, contrib);
             break;
         } case ShapeType::Ellipse: {
-            Ellipse *d_p = (Ellipse*)d_shape.ptr;
+            Ellipse_ *d_p = (Ellipse_*)d_shape.ptr;
             // velocity for the center is (1, 0) for x and (0, 1) for y
             atomic_add(&d_p->center[0], normal * contrib);
             // velocity for the radius:
@@ -1689,11 +1689,11 @@ PYBIND11_MODULE(diffvg, m) {
         .def_readonly("radius", &Circle::radius)
         .def_readonly("center", &Circle::center);
 
-    py::class_<Ellipse>(m, "Ellipse")
+    py::class_<Ellipse_>(m, "Ellipse")
         .def(py::init<Vector2f, Vector2f>())
-        .def("get_ptr", &Ellipse::get_ptr)
-        .def_readonly("radius", &Ellipse::radius)
-        .def_readonly("center", &Ellipse::center);
+        .def("get_ptr", &Ellipse_::get_ptr)
+        .def_readonly("radius", &Ellipse_::radius)
+        .def_readonly("center", &Ellipse_::center);
 
     py::class_<Path>(m, "Path")
         .def(py::init<ptr<int>, ptr<float>, ptr<float>, int, int, bool, bool>())

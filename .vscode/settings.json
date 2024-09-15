@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "chrono": "cpp",
+        "utility": "cpp",
+        "charconv": "cpp",
+        "xmemory": "cpp"
+    }
+}

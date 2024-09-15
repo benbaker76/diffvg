@@ -1,0 +1,13 @@
+torch==2.4.0+cu124
+torchvision==0.19.0+cu124
+numpy==1.26.3
+scikit-image==0.24.0
+cmake==3.30.3
+ffmpeg==1.4
+svgwrite==1.4.3
+svgpathtools==1.6.1
+cssutils==2.11.1
+numba==0.60.0
+torch-tools==0.1.5
+visdom==0.2.4
+wheel==0.44.0

@@ -55,10 +55,10 @@ void copy_and_init_shapes(Scene &scene,
                 d_p->center = Vector2f{0, 0};
                 break;
             } case ShapeType::Ellipse: {
-                Ellipse *p = (Ellipse *)scene.shapes[shape_id].ptr;
-                const Ellipse *p_ = (const Ellipse*)(shape_list[shape_id]->ptr);
+                Ellipse_ *p = (Ellipse_ *)scene.shapes[shape_id].ptr;
+                const Ellipse_ *p_ = (const Ellipse_*)(shape_list[shape_id]->ptr);
                 *p = *p_;
-                Ellipse *d_p = (Ellipse *)scene.d_shapes[shape_id].ptr;
+                Ellipse_ *d_p = (Ellipse_ *)scene.d_shapes[shape_id].ptr;
                 d_p->radius = Vector2f{0, 0};
                 d_p->center = Vector2f{0, 0};
                 break;
@@ -122,7 +122,7 @@ compute_shape_length(const std::vector<const Shape *> &shape_list) {
                 shape_length += float(2.f * M_PI) * p_->radius;
                 break;
             } case ShapeType::Ellipse: {
-                const Ellipse *p_ = (const Ellipse*)(shape_list[shape_id]->ptr);
+                const Ellipse_ *p_ = (const Ellipse_*)(shape_list[shape_id]->ptr);
                 // https://en.wikipedia.org/wiki/Ellipse#Circumference
                 // Ramanujan's ellipse circumference approximation
                 auto a = p_->radius.x;
@@ -504,7 +504,7 @@ void compute_bounding_boxes(Scene &scene,
                                                    p->center + p->radius};
                 break;
             } case ShapeType::Ellipse: {
-                const Ellipse *p = (const Ellipse*)(shape_list[shape_id]->ptr);
+                const Ellipse_ *p = (const Ellipse_*)(shape_list[shape_id]->ptr);
                 scene.shapes_bbox[shape_id] = AABB{p->center - p->radius,
                                                    p->center + p->radius};
                 break;
@@ -746,10 +746,10 @@ size_t allocate_buffers(Scene &scene,
                 buffer_size += align(sizeof(Circle)); // scene.d_shapes[shape_id].ptr
                 break;
             } case ShapeType::Ellipse: {
-                if (alloc_mode) scene.shapes[shape_id].ptr = (Ellipse*)&scene.buffer[buffer_size];
-                buffer_size += align(sizeof(Ellipse)); // scene.shapes[shape_id].ptr
-                if (alloc_mode) scene.d_shapes[shape_id].ptr = (Ellipse*)&scene.buffer[buffer_size];
-                buffer_size += align(sizeof(Ellipse)); // scene.d_shapes[shape_id].ptr
+                if (alloc_mode) scene.shapes[shape_id].ptr = (Ellipse_*)&scene.buffer[buffer_size];
+                buffer_size += align(sizeof(Ellipse_)); // scene.shapes[shape_id].ptr
+                if (alloc_mode) scene.d_shapes[shape_id].ptr = (Ellipse_*)&scene.buffer[buffer_size];
+                buffer_size += align(sizeof(Ellipse_)); // scene.d_shapes[shape_id].ptr
                 break;
             } case ShapeType::Path: {
                 if (alloc_mode) scene.shapes[shape_id].ptr = (Path*)&scene.buffer[buffer_size];
@@ -786,9 +786,9 @@ size_t allocate_buffers(Scene &scene,
                 buffer_size += align(sizeof(BVHNode) * (2 * p_->num_base_points - 1));
                 break;
             } case ShapeType::Rect: {
-                if (alloc_mode) scene.shapes[shape_id].ptr = (Ellipse*)&scene.buffer[buffer_size];
+                if (alloc_mode) scene.shapes[shape_id].ptr = (Ellipse_*)&scene.buffer[buffer_size];
                 buffer_size += align(sizeof(Rect)); // scene.shapes[shape_id].ptr
-                if (alloc_mode) scene.d_shapes[shape_id].ptr = (Ellipse*)&scene.buffer[buffer_size];
+                if (alloc_mode) scene.d_shapes[shape_id].ptr = (Ellipse_*)&scene.buffer[buffer_size];
                 buffer_size += align(sizeof(Rect)); // scene.d_shapes[shape_id].ptr
                 break;
             } default: {

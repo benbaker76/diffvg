@@ -94,9 +94,9 @@ inline void swap_(T &a, T &b) {
     b = tmp;
 }
 
-inline double log2(double x) {
-    return log(x) / log(Real(2));
-}
+//inline double log2(double x) {
+//    return log(x) / log(Real(2));
+//}
 
 template <typename T>
 DEVICE

@@ -1,3 +1,7 @@
+import os
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '../diffvg'))
+from diffvg import *
 from .device import *
 from .shape import *
 from .pixel_filter import *

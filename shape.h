@@ -22,7 +22,7 @@ struct Circle {
     }
 };
 
-struct Ellipse {
+struct Ellipse_ {
     Vector2f radius;
     Vector2f center;
 
@@ -85,8 +85,8 @@ struct Shape {
         return *(Circle*)ptr;
     }
 
-    Ellipse as_ellipse() const {
-        return *(Ellipse*)ptr;
+    Ellipse_ as_ellipse() const {
+        return *(Ellipse_*)ptr;
     }
 
     Path as_path() const {

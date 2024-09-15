@@ -46,7 +46,7 @@ Vector2f sample_boundary(const Circle &circle,
 }
 
 DEVICE
-Vector2f sample_boundary(const Ellipse &ellipse,
+Vector2f sample_boundary(const Ellipse_ &ellipse,
                          float t,
                          Vector2f &normal,
                          float &pdf,
@@ -430,7 +430,7 @@ Vector2f sample_boundary(const SceneData &scene,
                 *(const Circle *)shape.ptr, t, normal, pdf, data, stroke_perturb_direction, shape.stroke_width);
         case ShapeType::Ellipse:
             return sample_boundary(
-                *(const Ellipse *)shape.ptr, t, normal, pdf, data, stroke_perturb_direction, shape.stroke_width);
+                *(const Ellipse_ *)shape.ptr, t, normal, pdf, data, stroke_perturb_direction, shape.stroke_width);
         case ShapeType::Path:
             return sample_boundary(
                 *(const Path *)shape.ptr,
