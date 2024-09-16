@@ -20,16 +20,21 @@ diffvg is a differentiable rasterizer for 2D vector graphics. See the webpage fo
 1. Install Python 3.10 from the [Microsoft Store](https://www.microsoft.com/store/productId/9PJPW5LDXLZ5?ocid=pdpshare)
 2. Install the [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads)
 3. Install [ffmpeg](https://www.ffmpeg.org/). Make sure ffmpeg is added to your `PATH` environment variable (Eg. `C:\FFmpeg\bin`)
-```
-git clone https://github.com/benbaker76/diffvg
-git submodule update --init --recursive
-git -m venv .venv
-./.venv/Scripts/activate
-pip install torch==2.4.0+cu124 torchvision==0.19.0+cu124 --index-url https://download.pytorch.org/whl/cu124
-pip install -r requirements.txt
-set LIBDIR=.\.venv\Lib\site-packages
-python setup.py bdist_wheel
-pip install dist/diffvg-0.0.1-cp310-cp310-win_amd64.whl
+```sh
+> git clone https://github.com/benbaker76/diffvg
+> cd diffvg
+> git submodule update --init --recursive
+> git -m venv .venv
+> ./.venv/Scripts/activate
+> pip install torch==2.4.0+cu124 torchvision==0.19.0+cu124 --index-url https://download.pytorch.org/whl/cu124
+> pip install -r requirements.txt
+> set LIBDIR=.\.venv\Lib\site-packages
+> python setup.py bdist_wheel
+> pip install dist/diffvg-0.0.1-cp310-cp310-win_amd64.whl
+# Test it's working
+> python apps\refine_svg.py
+usage: refine_svg.py [-h] [--use_lpips_loss] [--num_iter NUM_ITER] svg target
+refine_svg.py: error: the following arguments are required: svg, target
 ```
 
 # Run
