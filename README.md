@@ -16,8 +16,10 @@ diffvg is a differentiable rasterizer for 2D vector graphics. See the webpage fo
 ![circle_outline](https://user-images.githubusercontent.com/951021/65125594-84f7a280-d9aa-11e9-8bc4-669fd2eff2f4.gif)
 ![ellipse_transform](https://user-images.githubusercontent.com/951021/67149013-06b54700-f25b-11e9-91eb-a61171c6d4a4.gif)
 
-# Install
-Install the [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads)
+# Install (Windows)
+1. Install Python 3.10 from the [Microsoft Store](https://www.microsoft.com/store/productId/9PJPW5LDXLZ5?ocid=pdpshare)
+2. Install the [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads)
+3. Install [ffmpeg](https://www.ffmpeg.org/). Make sure ffmpeg is added to your `PATH` environment variable (Eg. `C:\FFmpeg\bin`)
 ```
 git clone https://github.com/benbaker76/diffvg
 git submodule update --init --recursive
@@ -28,49 +30,6 @@ pip install -r requirements.txt
 set LIBDIR=.\.venv\Lib\site-packages
 python setup.py bdist_wheel
 pip install dist/diffvg-0.0.1-cp310-cp310-win_amd64.whl
-```
-
-# Install using poetry
-
-## prerequisite
-install python 3.7, poetry and ffmpeg
-
-```
-# install poetry (mac, linux)
-curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
-
-# install ffmpeg
-
-(macos)
-brew install ffmpeg
-
-(linux)
-sudo apt install ffmpeg
-
-or use conda
-conda install -y -c conda-forge ffmpeg
-```
-
-## Install python packages
-
-```
-# install all python dependencies
-poetry install
-
-# install pydiffvg
-poetry run python setup.py install
-```
-
-Now to run the apps, just add `poetry run` before each of the commands below, e.g.
-
-```
-poetry run python single_circle.py
-```
-
-# Building in debug mode
-
-```
-python setup.py build --debug install
 ```
 
 # Run
