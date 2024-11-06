@@ -24,7 +24,7 @@ diffvg is a differentiable rasterizer for 2D vector graphics. See the webpage fo
 > git clone https://github.com/benbaker76/diffvg
 > cd diffvg
 > git submodule update --init --recursive
-> git -m venv .venv
+> python -m venv .venv
 > ./.venv/Scripts/activate
 > pip install torch==2.4.0+cu124 torchvision==0.19.0+cu124 --index-url https://download.pytorch.org/whl/cu124
 > pip install -r requirements.txt
