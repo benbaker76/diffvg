@@ -25,12 +25,12 @@ diffvg is a differentiable rasterizer for 2D vector graphics. See the webpage fo
 > cd diffvg
 > git submodule update --init --recursive
 > python -m venv .venv
-> ./.venv/Scripts/activate
+> .\.venv\Scripts\activate
 > pip install torch==2.4.0+cu124 torchvision==0.19.0+cu124 --index-url https://download.pytorch.org/whl/cu124
 > pip install -r requirements.txt
 > set LIBDIR=.\.venv\Lib\site-packages
 > python setup.py bdist_wheel
-> pip install dist/diffvg-0.0.1-cp310-cp310-win_amd64.whl
+> pip install dist\diffvg-0.0.1-cp310-cp310-win_amd64.whl
 # Test it's working
 > python apps\refine_svg.py
 usage: refine_svg.py [-h] [--use_lpips_loss] [--num_iter NUM_ITER] svg target
